@@ -19,6 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    padding-top: 114px;
     background-color: black;
     h1 {
         @include soraMedium();
@@ -236,4 +237,8 @@ margin: 80px 0;
     border-style: none;
     border-radius: 2rem;
     
+}
+
+.catalogo-main{
+    padding-top: 114px;
 }
