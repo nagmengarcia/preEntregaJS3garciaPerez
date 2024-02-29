@@ -25,6 +25,9 @@
     justify-content: space-between;
     min-height:80px ;
     padding: 0 48px;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
 
     .header__nav-options{
         list-style: none;

@@ -35,19 +35,19 @@ function renderProductos(){
         <p><button class="addToCart" id="${e.id}">Agregar al carrito</button></p>
         </div>`;
     }
+    
     document.getElementById("productos").innerHTML = mensaje;
 }
 
 
 
 
+
+renderSpanCarrito()
 renderProductos()
 
 for (let i = 1; i <= (obtenerProductosLS()).length; i++){
     agregarAlCarrito(i.toString())
 };
-
-
-
 
 

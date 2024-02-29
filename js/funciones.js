@@ -42,32 +42,25 @@ const productosLS = (e) => {
     localStorage.setItem("productos", JSON.stringify(e));
 }
 
-// productos guardados en LS
-productosLS(productos);
-
-// obteniendo productos de la LS, o en caso de que no existan, un array vacio
 const obtenerProductosLS = () => {
     return JSON.parse(localStorage.getItem("productos")) || [];
 }
+
+// guarde los prodcutos en la LS
+productosLS(productos);
 
 // Ahora quiero que al clickear en el menu me filtre por categorias.
 
 // Paso 1 > asigno variables para los elementos que se clickearan
 
-// ESTABA POR USAR ESTA LOGICA, pero no quise tener que repetir tanto codigo, asi que termine optando por una funcion, que me tomo 3 noches sin dormir...
-//  let arg = document.getElementById("Argentina");
-// arg.addEventListener("click", () => {
-//     localStorage.setItem('categoria', "Argentina")
-// })
-
-//en esta funcion, el id HTML debe ser === a category
 //basicamente toma un parametro que definira el id html de la variable x, el cual tiene un event handler que sobreescribe la categoria en localStorage
+//en esta funcion, el idHTML debe ser === a category
 const filtrarPorCategoria = (idHTML) => {
+    
     let x = document.getElementById(idHTML);
     x.addEventListener("click", () => { 
         localStorage.setItem('categoria', idHTML)
     })  
-    
 };
 
 // llamamos a la funcion
@@ -76,44 +69,51 @@ filtrarPorCategoria("Internacional")
 filtrarPorCategoria("Nacional")
 filtrarPorCategoria("Todas")
 
-// carrito
 
-const carrito = [];
+const guardarCarritoLS = (i) => {
+    localStorage.setItem('carrito', JSON.stringify(i));
+}
 
+const obtenerCarritoLS = () => {
+    return JSON.parse(localStorage.getItem('carrito')) || [];
+}
 // en este caso el idHTML sera igual al id de producto
 
+let badgeCarrito = document.getElementById('cartIconBadge');
 
-
-
-const agregarAlCarrito = (idHTML) => {
-    let ids = document.getElementById(idHTML) || false;
-    // tengo que hacer que al clickear ese id, me encuentre el producto que matchee con el idHTML, deberia parsear Number(idHTML), y en caso de que haya una coincidencia me pushee el elemento a carrito.
-    const prods = obtenerProductosLS();
-    const encontrarProducto = prods.filter(a => a.id === Number(idHTML));
-    
-    if(ids !== false){
-        ids.addEventListener('click', () => {
-            console.log(`Se agrego el item ${idHTML} al carrito`)
-            carrito.push(encontrarProducto);
-            // entonces deberia guardar el valor de carrito[] en la LS y pedir que se renderee el carrito
-        })
-    }
+const renderSpanCarrito = () => {
+    const carritoRecuperado = (obtenerCarritoLS()).length;
+    badgeCarrito.innerText = carritoRecuperado;
     
 };
 
+renderSpanCarrito()
 
+// creo un buscador de productos
 
-
-
+const buscadorDeProducto = (e) => {
+    const a = obtenerProductosLS();
+    const b = a.find( i => i.id === Number(e));
+    return b;
+}
+    
+const agregarAlCarrito = (idHTML) => {
+    
+    let ids = document.getElementById(idHTML) || false;
+    // tengo que hacer que al clickear ese id, me encuentre el producto que matchee con el idHTML, deberia parsear Number(idHTML), y en caso de que haya una coincidencia me pushee el elemento a carrito.
+    // const encontrarProducto = prods.find(a => a.id === Number(idHTML));
+    if(ids !== false){
+        ids.addEventListener('click', () => {
+            const carrito = obtenerCarritoLS()
+            const productoEncontrado = buscadorDeProducto(idHTML);
+            console.log(`Se agrego el item ${idHTML} al carrito`)
+            carrito.push(productoEncontrado);
+            guardarCarritoLS(carrito);
+            renderSpanCarrito()
+        })
+    }
+};
 
 const obtenerCategoriaLS = () => {
    return localStorage.getItem('categoria') || "Todas"
 }
-
-
-// const getCategoryType = () => {
-//     return JSON.parse(localStorage.getItem('categoryF')) || 'all';
-// };
-
-
-

@@ -35,6 +35,9 @@
   justify-content: space-between;
   min-height: 80px;
   padding: 0 48px;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
 }
 .header__nav .header__nav-options {
   list-style: none;
@@ -307,6 +310,16 @@ body {
   color: green;
   text-align: right;
   margin-right: 16px;
+}
+
+.addToCart {
+  color: white;
+  background-color: black;
+  width: calc(100% - 16px);
+  margin: 16px;
+  padding: 12px 0;
+  border-style: none;
+  border-radius: 2rem;
 }
 
 /*# sourceMappingURL=estilo.css.map */
