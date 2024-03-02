@@ -96,9 +96,10 @@ const buscadorDeProducto = (e) => {
     const b = a.find( i => i.id === Number(e));
     return b;
 }
+
+
     
 const agregarAlCarrito = (idHTML) => {
-    
     let ids = document.getElementById(idHTML) || false;
     // tengo que hacer que al clickear ese id, me encuentre el producto que matchee con el idHTML, deberia parsear Number(idHTML), y en caso de que haya una coincidencia me pushee el elemento a carrito.
     // const encontrarProducto = prods.find(a => a.id === Number(idHTML));
