@@ -54,6 +54,10 @@
     width: 80px;
     padding: 8px;
     overflow: hidden;
+    a {
+        color: black;
+        text-decoration: none;
+    }
 }
 
 .header__nav__logo {
@@ -78,4 +82,9 @@ header {
     position: fixed;
     width: 100%;
     z-index: 99;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
 }

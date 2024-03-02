@@ -117,3 +117,16 @@ const agregarAlCarrito = (idHTML) => {
 const obtenerCategoriaLS = () => {
    return localStorage.getItem('categoria') || "Todas"
 }
+
+
+// eliminar carrito
+
+const eliminarCarritoEntero = () => {
+    localStorage.removeItem('carrito');
+    renderSpanCarrito()
+    renderCarritoFinal()
+}
+
+
+
+  

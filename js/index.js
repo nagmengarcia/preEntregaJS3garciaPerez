@@ -1,1 +1,0 @@
-// aca no quiero renderear productos.
